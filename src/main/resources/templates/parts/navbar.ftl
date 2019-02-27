@@ -9,12 +9,12 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="/EncryptMethods" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Шифры
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Монофоническая замена</a>
-                    <a class="dropdown-item" href="#">Шифр виженера</a>
+                    <a class="dropdown-item" href="/Encrypts/HomophonicSubstitutionCipher">Монофоническая замена</a>
+                    <a class="dropdown-item" href="/Encrypts/VigenereChiper">Шифр виженера</a>
                 </div>
             </li>
         </ul>
