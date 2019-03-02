@@ -38,30 +38,56 @@ public class HomophonicSubstitutionCipherService {
         return frequencies;
     }
 
-    public Map<Character, List<Integer>> getKeys(String text, Map<Character, Double> frequencies) {
+    public Map<Character, List<Integer>> getKeys(String text, Map<Character, Double> frequencies) throws Exception {
+        int maxCodes = 8999;
+        int multiple = 1;
+
+        List<Integer> usedKeys = new ArrayList<>();
+
         Random random = new Random();
 
         Map<Character, List<Integer>> keys = new HashMap<>();
 
-        Double max = frequencies.values().stream().max((a, b) -> {
-            if (a > b) {
-                return 1;
-            } else if (a < b) {
-                return -1;
-            } else return 0;
+        double min = frequencies.values().stream().min((a, b) -> {
+            if (a == b) {
+                return 0;
+            }
+
+            return a > b ? 1 : -1;
 
         }).orElseThrow(IllegalArgumentException::new);
 
-
+        ;
         for (Map.Entry<Character, Double> entry : frequencies.entrySet()) {
+
             List<Integer> list = new ArrayList<>();
             double f = entry.getValue();
+            int count = (int) Math.round((f / min));
+            if (count < 1) {
+                count = 1;
+            }
 
+            for (int i = 0; i < count; i++) {
+
+                if (usedKeys.size() >= maxCodes) {
+                    multiple *= 10;
+                    maxCodes *= 10;
+                }
+
+                int key = 0;
+                do {
+                    key = 1000 + random.nextInt(9999 * multiple);
+                } while (usedKeys.contains(key));
+
+                usedKeys.add(key);
+                list.add(key);
+            }
 
             keys.put(entry.getKey(), list);
         }
 
+        System.out.println(keys);
+
         return keys;
     }
-
 }

@@ -11,7 +11,7 @@
             <h3>Before</h3>
         </div>
         <div class="input-group before-encrypt">
-            <textarea class="form-control" name="text"></textarea>
+            <textarea class="form-control" name="text">${message?if_exists}</textarea>
         </div>
         <div class="row mt-4">
             <div class="col-2 offset-5">
@@ -29,7 +29,7 @@
             <h3>After</h3>
         </div>
         <div>
-            <textarea class="form-control after-encrypt" readonly></textarea>
+            <textarea class="form-control after-encrypt" readonly>${encryptMessage?if_exists}</textarea>
         </div>
     </div>
 </div>
