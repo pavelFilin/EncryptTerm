@@ -1,9 +1,10 @@
 package com.feeleen.EncryptTermSite.services;
 
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import org.springframework.stereotype.Service;
 
 @Service
-public class VigenereChiperService {
+public class VigenereCipherService {
 
     char[][] matrix = {
             {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'},
@@ -35,29 +36,46 @@ public class VigenereChiperService {
 
     private String engAph = "abcdefghijklmnpqrstuvwxyz";
 
-    public String enryptMessage(String text, String key) {
+    public String encryptMessage(String text, String key) {
         int max = key.length();
+        int currentKeyPosition = 0;
+        StringBuilder newText = new StringBuilder();
         for (int i = 0; i < text.length(); i++) {
+
             Character c = text.charAt(i);
             if (isLetter(c)) {
-                //todo encrypt
+                if (currentKeyPosition == max) {
+                    currentKeyPosition = 0;
+                }
+                newText.append(getCharFromMatrix(String.valueOf(key.charAt(currentKeyPosition)), c));
+
+                currentKeyPosition++;
+            } else {
+                newText.append(c);
             }
         }
+
+        return newText.toString();
     }
 
-    private char getCharFromMatrix(String key, int index) {
+    private char getCharFromMatrix(String key, char ch) {
         for (int i = 0; i < matrix.length; i++) {
-            if (matrix[i][0] == key.charAt(index)) {
-                return matrix[i][0];
+            if (matrix[i][0] == key.charAt(0)) {
+                for (int j = 0; j < matrix[i].length; j++) {
+                    if (matrix[i][j] == ch) {
+                        return matrix[i][engAph.indexOf(ch)];
+                    }
+                }
+                throw new IllegalArgumentException();
             }
         }
 
         throw new IllegalArgumentException();
     }
 
-    private boolean isLetter(Character character){
+    private boolean isLetter(Character character) {
         for (int i = 0; i < engAph.length(); i++) {
-            if (engAph.charAt(i)==character) {
+            if (engAph.charAt(i) == character) {
                 return true;
             }
         }

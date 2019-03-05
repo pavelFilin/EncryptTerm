@@ -15,6 +15,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/Encrypts/HomophonicSubstitutionCipher">Монофоническая замена</a>
                     <a class="dropdown-item" href="/Encrypts/VigenereChiper">Шифр виженера</a>
+                    <a class="dropdown-item" href="/Encrypts/TranspositionCipher">Метод табличной перестановки</a>
                 </div>
             </li>
         </ul>
