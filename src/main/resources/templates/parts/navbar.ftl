@@ -18,6 +18,9 @@
                     <a class="dropdown-item" href="/Encrypts/TranspositionCipher">Метод табличной перестановки</a>
                 </div>
             </li>
+            <li>
+                <a class="nav-link" href="/StringHashCodeExample">String hash code</a>
+            </li>
         </ul>
     </div>
 </nav>
