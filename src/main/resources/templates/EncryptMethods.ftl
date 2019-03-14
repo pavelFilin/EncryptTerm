@@ -8,6 +8,7 @@
 <ul>
     <li><a href="/Encrypts/HomophonicSubstitutionCipher">Омофоническая замена</a></li>
     <li><a href="/Encrypts/VigenereChiper">Шифр Виженера</a></li>
+    <li><a href="/Encrypts/TranspositionCipher">Перестанока</a></li>
 </ul>
 
 </@common.page>

@@ -9,13 +9,14 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="/EncryptMethods" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="/EncryptMethods" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     Шифры
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/Encrypts/HomophonicSubstitutionCipher">Монофоническая замена</a>
                     <a class="dropdown-item" href="/Encrypts/VigenereChiper">Шифр виженера</a>
                     <a class="dropdown-item" href="/Encrypts/TranspositionCipher">Метод табличной перестановки</a>
+                    <a class="dropdown-item" href="/Encrypts/CombinationCipher">Комбинированый шифр</a>
                 </div>
             </li>
             <li>
