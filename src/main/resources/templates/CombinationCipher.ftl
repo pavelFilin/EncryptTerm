@@ -2,7 +2,7 @@
 
 <@common.page>
 <h1>
-    Метод перестановки
+   
 </h1>
 
 <div class="row">
@@ -48,7 +48,7 @@
                 <th scope="col">code</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody>    `
             <#list keys as k, v>
             <tr>
             <th>${k}</th>
