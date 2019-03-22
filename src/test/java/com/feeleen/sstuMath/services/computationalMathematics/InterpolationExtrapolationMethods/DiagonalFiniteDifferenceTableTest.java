@@ -102,30 +102,10 @@ public class DiagonalFiniteDifferenceTableTest {
 
     @Test
     public void getTable() {
-        List<List<Double>> table = DiagonalFiniteDifferenceTable.getTable(data);
-        assertThat(tableExpected, is(tableExpected));
-    }
+        DiagonalFiniteDifferenceTable table = new DiagonalFiniteDifferenceTable(data);
 
-    @Test
-    public void initTable() {
-
-
-        List<List<Double>> table = DiagonalFiniteDifferenceTable.initTable(data);
-
-        assertThat(listsExpected, is(table));
+        assertThat(tableExpected, is(table.getTableEntry()));
     }
 
 
-    @Test
-    public void getDiff() {
-        List<Double> doubles = new ArrayList<>();
-        doubles.add(12.45);
-        doubles.add(41.412);
-        doubles.add(28.96);
-        doubles.add(34.45);
-        doubles.add(15.62);
-        doubles.add(21.62);
-        double diff = DiagonalFiniteDifferenceTable.getDiff(doubles);
-        Assert.assertEquals(154.512, diff, 0.0001);
-    }
 }
