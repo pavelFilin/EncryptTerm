@@ -15,37 +15,37 @@ public class DiagonalFiniteDifferenceTableTest {
     List<List<Double>> listsExpected = new ArrayList<>();
     List<List<Double>> tableExpected = new ArrayList<>();
 
-    @Before
-    public void setData() {
-        data = new double[][]{
-                {0.12, 6.278},
-                {0.14, 6.405},
-                {0.16, 6.487},
-                {0.18, 6.505},
-                {0.20, 6.436},
-                {0.22, 6.259},
-                {0.24, 5.954},
-        };
-    }
-
 //    @Before
 //    public void setData() {
 //        data = new double[][]{
-//                {1.50, 15.132},
-//                {1.55, 17.422},
-//                {1.60, 20.393},
-//                {1.65, 23.994},
-//                {1.70, 28.160},
-//                {1.75, 32.812},
-//                {1.80, 37.857},
-//                {1.85, 43.189},
-//                {1.90, 46.689},
-//                {1.95, 54.225},
-//                {2.00, 59.653},
-//                {2.05, 64.817},
-//                {2.10, 69.550},
+//                {0.12, 6.278},
+//                {0.14, 6.405},
+//                {0.16, 6.487},
+//                {0.18, 6.505},
+//                {0.20, 6.436},
+//                {0.22, 6.259},
+//                {0.24, 5.954},
 //        };
 //    }
+
+    @Before
+    public void setData() {
+        data = new double[][]{
+                {1.50, 15.132},
+                {1.55, 17.422},
+                {1.60, 20.393},
+                {1.65, 23.994},
+                {1.70, 28.160},
+                {1.75, 32.812},
+                {1.80, 37.857},
+                {1.85, 43.189},
+                {1.90, 46.689},
+                {1.95, 54.225},
+                {2.00, 59.653},
+                {2.05, 64.817},
+                {2.10, 69.550},
+        };
+    }
 
 
     public void setLists() {
@@ -163,6 +163,22 @@ public class DiagonalFiniteDifferenceTableTest {
             double v = InterpolationMethods.gaussMethod(x, data);
             System.out.println(x + "  :  " + v);
         }
+        System.out.println();
+
+        for (int i = 0; i <= 30; i++) {
+
+            double x = getX(i);
+            double v = InterpolationMethods.besselMethod(x, data);
+            System.out.println(x + "  :  " + v);
+        }
+
+        System.out.println();
+        for (int i = 0; i <= 30; i++) {
+
+            double x = getX(i);
+            double v = InterpolationMethods.stirlingMethod(x, data);
+            System.out.println(x + "  :  " + v);
+        }
 
         assertThat(tableExpected, is(table.getTableEntry()));
     }
@@ -172,7 +188,8 @@ public class DiagonalFiniteDifferenceTableTest {
         DiagonalFiniteDifferenceTable table = new DiagonalFiniteDifferenceTable(data);
 
         double v = InterpolationMethods.gaussMethod(0.168, data);
-
+        double v1 = InterpolationMethods.besselMethod(0.192, data);
+        double v2 = InterpolationMethods.stirlingMethod(0.204, data);
 
         assertThat(tableExpected, is(table.getTableEntry()));
     }

@@ -94,21 +94,7 @@ public class DiagonalFiniteDifferenceTable {
     }
 
     public int getIndexLeftX(double x) {
-//        int i = 0;
         List<Double> xList = getXList();
-        double minDiff = 0;
-        int iMax = 0;
-
-//        for (; i < xList.size(); i++) {
-//            double diff = Math.abs(xList.get(i) - x);
-//            if (minDiff > diff) {
-//                minDiff = diff;
-//                iMax = i;
-//            }
-//        }
-//
-//        return iMax;
-
         for (int i = 0; i < xList.size(); i++) {
             if (xList.get(i) > x) {
                 return i - 1;
@@ -116,5 +102,18 @@ public class DiagonalFiniteDifferenceTable {
         }
 
         throw new IllegalArgumentException();
+    }
+
+    public double getDiff(int index, int diffNumber) {
+        Double diff = getDiffList(diffNumber).get(index - diffNumber);
+        return diff;
+    }
+
+    public double getX(int index) {
+        return getXList().get(index);
+    }
+
+    public double getY(int index) {
+        return getYList().get(index);
     }
 }
