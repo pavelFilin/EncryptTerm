@@ -28,10 +28,10 @@ public class DiagonalFiniteDifferenceTable {
             List<Double> columnPrev = this.tableEntry.get(this.tableEntry.size() - 2);
 
             for (int i = 0; i < columnPrev.size() - 1; i++) {
-                columnLast.add(columnPrev.get(i + 1)-columnPrev.get(i));
+                columnLast.add(columnPrev.get(i + 1) - columnPrev.get(i));
             }
 
-            diff = getSumOfList(columnLast);
+            diff = Math.abs(getSumOfList(columnLast));
         } while (diff > EPS);
 
 
@@ -64,25 +64,19 @@ public class DiagonalFiniteDifferenceTable {
     }
 
     public List<Double> getDiffList(int index) {
-        return tableEntry.get(index + 1);
+        return tableEntry.get(index + 2);
     }
 
     public int getDiffSize() {
         return tableEntry.size() - 2;
     }
 
-    public double getRoundX(double x) {
+    public double getLeftX(double x) {
         List<Double> xList = getXList();
         double minDiff = 0;
 
-        for (int i = 0; i < xList.size(); i++) {
-            double diff = Math.abs(xList.get(i) - x);
-            if (minDiff > diff) {
-                minDiff = diff;
-            }
-        }
 
-        return minDiff;
+        return xList.get(getIndexLeftX(x));
     }
 
     public double getH() {
@@ -90,29 +84,37 @@ public class DiagonalFiniteDifferenceTable {
         return getSumOfList(xList) / xList.size();
     }
 
-    public double getRoundYByX(double x) {
-        double roundX = getRoundX(x);
-        return getXList().stream().filter(x1->x1==roundX).findFirst().orElseThrow(ArithmeticException::new);
+    public double getLeftYByX(double x) {
+        double roundX = getLeftX(x);
+        return getXList().stream().filter(x1 -> x1 == roundX).findFirst().orElseThrow(ArithmeticException::new);
     }
 
     public List<List<Double>> getTableEntry() {
         return tableEntry;
     }
 
-    public int getIndexRoundX(double x) {
-        int i = 0;
+    public int getIndexLeftX(double x) {
+//        int i = 0;
         List<Double> xList = getXList();
         double minDiff = 0;
         int iMax = 0;
 
-        for ( ;i < xList.size(); i++) {
-            double diff = Math.abs(xList.get(i) - x);
-            if (minDiff > diff) {
-                minDiff = diff;
-                iMax = i;
+//        for (; i < xList.size(); i++) {
+//            double diff = Math.abs(xList.get(i) - x);
+//            if (minDiff > diff) {
+//                minDiff = diff;
+//                iMax = i;
+//            }
+//        }
+//
+//        return iMax;
+
+        for (int i = 0; i < xList.size(); i++) {
+            if (xList.get(i) > x) {
+                return i - 1;
             }
         }
 
-        return iMax;
+        throw new IllegalArgumentException();
     }
 }
