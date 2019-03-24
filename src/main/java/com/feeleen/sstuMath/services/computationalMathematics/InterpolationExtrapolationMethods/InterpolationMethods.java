@@ -5,8 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 public class InterpolationMethods {
-    @Autowired
     private static DiagonalFiniteDifferenceTable table;
+
+    public static void setTable(DiagonalFiniteDifferenceTable table) {
+        InterpolationMethods.table = table;
+    }
 
     public static double gaussMethod(double x) {
         double t = (x - table.getLeftX(x)) / table.getH();
@@ -25,7 +28,7 @@ public class InterpolationMethods {
         int index = table.getIndexLeftX(x);
 
 //        double a0 = (table.getY(index) + table.getY(index - 1)) / 2;
-        double a0 = (table.getY(index+1) + table.getY(index - 1)) / 2;
+        double a0 = (table.getY(index + 1) + table.getY(index - 1)) / 2;
         double a1 = (t - 1 / 2) * table.getDiff(index, 0);
 //        double a2 = (t * (t - 1) / factorial(2)) * table.getDiff(index - 1, 1) * table.getDiff(index, 1) / 2;
         double a2 = (t * (t - 1) / factorial(2)) * table.getDiff(index, 1) * table.getDiff(index + 1, 1) / 2;

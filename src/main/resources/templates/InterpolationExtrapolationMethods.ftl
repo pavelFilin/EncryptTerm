@@ -28,11 +28,41 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-4"></div>
-    <div class="col-4"></div>
-    <div class="col-4"></div>
-</div>
+    <div class="col-6 offset-3">
+
+        <div class="row">
+            <div class="col-4">
+                <table class="table table-sm table-bordered table-striped ">
+                    <caption style="caption-side: top;">Gauss</caption>
+                        <#list gauss as g>
+                            <tr>
+                                <td>${g?if_exists}</td>
+                            </tr>
+                        </#list>
+                </table>
+            </div>
+            <div class="col-4">
+                <table class="table table-sm table-bordered table-striped ">
+                    <caption style="caption-side: top;">Bessel</caption>
+                    <#list bessel as g>
+                        <tr>
+                            <td>${g?if_exists}</td>
+                        </tr>
+                    </#list>
+                </table>
+            </div>
+            <div class="col-4">
+                <table class="table table-sm table-bordered table-striped ">
+                    <caption style="caption-side: top;">Stirling</caption>
+                    <#list stirling as g>
+                        <tr>
+                            <td>${g?if_exists}</td>
+                        </tr>
+                    </#list>
+                </table>
+            </div>
+        </div>
+    </div>
 
 
 </@common.page>

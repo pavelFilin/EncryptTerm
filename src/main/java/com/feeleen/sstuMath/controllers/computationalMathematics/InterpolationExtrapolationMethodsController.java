@@ -22,11 +22,11 @@ public class InterpolationExtrapolationMethodsController {
     @GetMapping("InterpolationExtrapolationMethods")
     public String getInterpolationExtrapolationMethods(Model model) {
         List<List<Double>> tableEntry = diagonalFiniteDifferenceTable.getTableEntry();
-
+        interpolationExtrapolationMethodsService.setTable(diagonalFiniteDifferenceTable);
         model.addAttribute("table", convertList(tableEntry));
-        //        model.addAttribute("gauss", interpolationExtrapolationMethodsService.getGaussInterpolation());
-        //        model.addAttribute("bessel", interpolationExtrapolationMethodsService.getBessilInterpolation());
-        //        model.addAttribute("stirling", interpolationExtrapolationMethodsService.getStirlingInterpolation());
+        model.addAttribute("gauss", interpolationExtrapolationMethodsService.getGaussInterpolation());
+        model.addAttribute("bessel", interpolationExtrapolationMethodsService.getBessilInterpolation());
+        model.addAttribute("stirling", interpolationExtrapolationMethodsService.getStirlingInterpolation());
         return "InterpolationExtrapolationMethods";
     }
 
@@ -53,7 +53,7 @@ public class InterpolationExtrapolationMethodsController {
                     t[i][j] = t[i - (1 + j - 2)][j];
                 }
                 if (i <= j - 1) {
-                    t[i-1][j] = 0;
+                    t[i - 1][j] = 0;
                 }
             }
         }
