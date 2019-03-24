@@ -16,8 +16,14 @@ public class DiagonalFiniteDifferenceTable {
 
     }
 
+    public DiagonalFiniteDifferenceTable() {
+
+
+    }
+
 
     private void fillTable() {
+        int k = 0;
         double diff = 0;
         this.tableEntry = initTable();
 
@@ -32,9 +38,8 @@ public class DiagonalFiniteDifferenceTable {
             }
 
             diff = Math.abs(getSumOfList(columnLast));
-        } while (diff > EPS);
-
-
+            k++;
+        } while (diff > EPS && k<3);
     }
 
     private List<List<Double>> initTable() {

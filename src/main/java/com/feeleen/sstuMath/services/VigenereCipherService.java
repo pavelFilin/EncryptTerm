@@ -1,4 +1,4 @@
-package com.feeleen.EncryptTermSite.services;
+package com.feeleen.sstuMath.services;
 
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import org.springframework.stereotype.Service;

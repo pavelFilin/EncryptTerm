@@ -1,13 +1,14 @@
 package com.feeleen.sstuMath.services.computationalMathematics.InterpolationExtrapolationMethods;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
 public class InterpolationMethods {
-    public static double gaussMethod(double x, double[][] xy) {
+    @Autowired
+    private static DiagonalFiniteDifferenceTable table;
 
-        DiagonalFiniteDifferenceTable table = new DiagonalFiniteDifferenceTable(xy);
-
-        List<List<Double>> tableEntry = table.getTableEntry();
+    public static double gaussMethod(double x) {
         double t = (x - table.getLeftX(x)) / table.getH();
         int index = table.getIndexLeftX(x);
 
@@ -15,28 +16,26 @@ public class InterpolationMethods {
         double a1 = (table.getDiff(index, 0)) * t;
         double a2 = table.getDiff(index, 1) * t * (t - 1) / 6;
         double a3 = ((t - 1) * t * (t + 1)) * table.getDiff(index, 2) / factorial(3);
+
         return a0 + a1 + a2 + a3;
     }
 
-    public static double besselMethod(double x, double[][] xy) {
-        DiagonalFiniteDifferenceTable table = new DiagonalFiniteDifferenceTable(xy);
-
-        List<List<Double>> tableEntry = table.getTableEntry();
+    public static double besselMethod(double x) {
         double t = (x - table.getLeftX(x)) / table.getH();
         int index = table.getIndexLeftX(x);
 
+//        double a0 = (table.getY(index) + table.getY(index - 1)) / 2;
         double a0 = (table.getY(index+1) + table.getY(index - 1)) / 2;
         double a1 = (t - 1 / 2) * table.getDiff(index, 0);
-        double a2 = (t * (t - 1) / factorial(2)) * table.getDiff(index - 1, 1) * table.getDiff(index, 1) / 2;
+//        double a2 = (t * (t - 1) / factorial(2)) * table.getDiff(index - 1, 1) * table.getDiff(index, 1) / 2;
+        double a2 = (t * (t - 1) / factorial(2)) * table.getDiff(index, 1) * table.getDiff(index + 1, 1) / 2;
         double a3 = (t - 1 / 2) * t * (t - 1) / factorial(3) * table.getDiff(index - 1, 2);
 
         return a0 + a1 + a2 + a3;
 
     }
 
-    public static double stirlingMethod(double x, double[][] xy) {
-        DiagonalFiniteDifferenceTable table = new DiagonalFiniteDifferenceTable(xy);
-
+    public static double stirlingMethod(double x) {
         double t = (x - table.getLeftX(x)) / table.getH();
         int index = table.getIndexLeftX(x);
 

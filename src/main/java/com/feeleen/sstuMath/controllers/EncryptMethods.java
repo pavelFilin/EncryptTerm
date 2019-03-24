@@ -1,4 +1,4 @@
-package com.feeleen.EncryptTermSite.controllers;
+package com.feeleen.sstuMath.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

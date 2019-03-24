@@ -152,47 +152,47 @@ public class DiagonalFiniteDifferenceTableTest {
         row5.add(-0.020);
     }
 
-    @Test
-    public void getTable() {
-        DiagonalFiniteDifferenceTable table = new DiagonalFiniteDifferenceTable(data);
-
-
-        for (int i = 0; i <= 30; i++) {
-
-            double x = getX(i);
-            double v = InterpolationMethods.gaussMethod(x, data);
-            System.out.println(x + "  :  " + v);
-        }
-        System.out.println();
-
-        for (int i = 0; i <= 30; i++) {
-
-            double x = getX(i);
-            double v = InterpolationMethods.besselMethod(x, data);
-            System.out.println(x + "  :  " + v);
-        }
-
-        System.out.println();
-        for (int i = 0; i <= 30; i++) {
-
-            double x = getX(i);
-            double v = InterpolationMethods.stirlingMethod(x, data);
-            System.out.println(x + "  :  " + v);
-        }
-
-        assertThat(tableExpected, is(table.getTableEntry()));
-    }
-
-    @Test
-    public void getTable2() {
-        DiagonalFiniteDifferenceTable table = new DiagonalFiniteDifferenceTable(data);
-
-        double v = InterpolationMethods.gaussMethod(0.168, data);
-        double v1 = InterpolationMethods.besselMethod(0.192, data);
-        double v2 = InterpolationMethods.stirlingMethod(0.204, data);
-
-        assertThat(tableExpected, is(table.getTableEntry()));
-    }
+//    @Test
+//    public void getTable() {
+//        DiagonalFiniteDifferenceTable table = new DiagonalFiniteDifferenceTable(data);
+//
+//
+//        for (int i = 0; i <= 30; i++) {
+//
+//            double x = getX(i);
+//            double v = InterpolationMethods.gaussMethod(x, data);
+//            System.out.println(x + "  :  " + v);
+//        }
+//        System.out.println();
+//
+//        for (int i = 0; i <= 30; i++) {
+//
+//            double x = getX(i);
+//            double v = InterpolationMethods.besselMethod(x, data);
+//            System.out.println(x + "  :  " + v);
+//        }
+//
+//        System.out.println();
+//        for (int i = 0; i <= 30; i++) {
+//
+//            double x = getX(i);
+//            double v = InterpolationMethods.stirlingMethod(x, data);
+//            System.out.println(x + "  :  " + v);
+//        }
+//
+//        assertThat(tableExpected, is(table.getTableEntry()));
+//    }
+//
+//    @Test
+//    public void getTable2() {
+//        DiagonalFiniteDifferenceTable table = new DiagonalFiniteDifferenceTable(data);
+//
+//        double v = InterpolationMethods.gaussMethod(0.168, data);
+//        double v1 = InterpolationMethods.besselMethod(0.192, data);
+//        double v2 = InterpolationMethods.stirlingMethod(0.204, data);
+//
+//        assertThat(tableExpected, is(table.getTableEntry()));
+//    }
 
 
     public double getX(int n) {

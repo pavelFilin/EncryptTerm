@@ -1,6 +1,6 @@
-package com.feeleen.EncryptTermSite.controllers;
+package com.feeleen.sstuMath.controllers;
 
-import com.feeleen.EncryptTermSite.services.TranspositionСipherService;
+import com.feeleen.sstuMath.services.TranspositionСipherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
