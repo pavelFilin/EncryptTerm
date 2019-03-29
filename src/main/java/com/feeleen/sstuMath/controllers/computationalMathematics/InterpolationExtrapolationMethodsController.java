@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-//@RequestMapping("")
 public class InterpolationExtrapolationMethodsController {
     @Autowired
     private InterpolationExtrapolationMethodsService interpolationExtrapolationMethodsService;

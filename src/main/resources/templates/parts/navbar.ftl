@@ -25,6 +25,9 @@
             <li>
                 <a class="nav-link" href="/InterpolationExtrapolationMethods">Interpolations</a>
             </li>
+            <li>
+                <a class="nav-link" href="/graph">Graph</a>
+            </li>
         </ul>
     </div>
 </nav>

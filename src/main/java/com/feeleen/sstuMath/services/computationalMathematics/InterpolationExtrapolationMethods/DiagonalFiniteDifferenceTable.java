@@ -21,7 +21,6 @@ public class DiagonalFiniteDifferenceTable {
 
     }
 
-
     private void fillTable() {
         int k = 0;
         double diff = 0;
