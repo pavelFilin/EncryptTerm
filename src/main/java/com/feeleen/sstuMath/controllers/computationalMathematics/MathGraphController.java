@@ -1,6 +1,7 @@
 package com.feeleen.sstuMath.controllers.computationalMathematics;
 
 import com.feeleen.sstuMath.services.computationalMathematics.utils.restDto.DataForMathGraph;
+import com.feeleen.sstuMath.services.computationalMathematics.utils.restDto.Point;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,16 +23,23 @@ public class MathGraphController {
 
     @ResponseBody
     @RequestMapping(value = "/ajax", method = RequestMethod.GET)
-    public List<DataForMathGraph> getGraphA() {
-        List<DataForMathGraph> data = new ArrayList<>();
-
-        double x = -10;
-        while (x <= 10) {
-            data.add(new DataForMathGraph(1, x, f1(x)));
-            x += 1;
+    public List<Point> getPoints() {
+        List<Point> points = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            points.add(new Point(i,i));
         }
-        return data;
+        return points;
     }
+//    public List<DataForMathGraph> getGraphA() {
+////        List<DataForMathGraph> data = new ArrayList<>();
+////
+////        double x = -10;
+////        while (x <= 10) {
+////            data.add(new DataForMathGraph(1, x, f1(x)));
+////            x += 1;
+////        }
+////        return data;
+//    }
 
     private double f1(double x) {
         return Math.exp(x) + x + 1;
