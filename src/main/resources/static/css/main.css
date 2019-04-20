@@ -12,3 +12,15 @@
 #plotBtn {
     color: aliceblue;
 }
+
+.nav-index {
+    text-align: center;
+}
+
+.nav-index li {
+    text-align: left;
+}
+
+.nav-index > div > div {
+    margin-top: 20px;
+}
