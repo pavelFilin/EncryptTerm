@@ -1,13 +1,12 @@
 package com.feeleen.sstuMath.controllers.computationalMathematics;
 
-import com.feeleen.sstuMath.services.computationalMathematics.utils.restDto.DataForMathGraph;
+import com.feeleen.sstuMath.services.computationalMathematics.converter.TwoCurvesConverter;
+import com.feeleen.sstuMath.services.computationalMathematics.converter.TwoCurvesSimpleConverter;
 import com.feeleen.sstuMath.services.computationalMathematics.utils.restDto.Point;
+import com.feeleen.sstuMath.services.computationalMathematics.utils.restDto.TwoCurvesDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,24 +21,21 @@ public class MathGraphController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/ajax", method = RequestMethod.GET)
-    public List<Point> getPoints() {
-        List<Point> points = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            points.add(new Point(i,i));
+    @RequestMapping(value = "/secantMethod", method = RequestMethod.POST)
+    public double[][] getPoints(@RequestParam(required = false) double a, @RequestParam(required = false) double b, @RequestParam(required = false) double h) {
+        List<Point> p1 = new ArrayList<>();
+        List<Point> p2 = new ArrayList<>();
+
+        List<Double> xList = new ArrayList<>();
+
+        for (double i = a; i < b; i += h) {
+            xList.add(Math.floor(i*10)/10);
+            p1.add(new Point(i, f1(i)));
+            p2.add(new Point(i, f2(i)));
         }
-        return points;
+        TwoCurvesSimpleConverter d = new TwoCurvesSimpleConverter();
+        return d.convert(p1, p2, xList);
     }
-//    public List<DataForMathGraph> getGraphA() {
-////        List<DataForMathGraph> data = new ArrayList<>();
-////
-////        double x = -10;
-////        while (x <= 10) {
-////            data.add(new DataForMathGraph(1, x, f1(x)));
-////            x += 1;
-////        }
-////        return data;
-//    }
 
     private double f1(double x) {
         return Math.exp(x) + x + 1;

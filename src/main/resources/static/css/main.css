@@ -1,2 +1,14 @@
 .after-encrypt {
 }
+
+.graph-form .input-number {
+     width: 90px;
+ }
+
+.graph-form .input-label {
+    width: 50px;
+}
+
+#plotBtn {
+    color: aliceblue;
+}

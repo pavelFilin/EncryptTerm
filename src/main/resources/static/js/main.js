@@ -1,44 +1,30 @@
-var data = {
-
-    // A labels array that can contain any sort of values
-    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-    // Our series array that contains series objects or in this case series data arrays
-    series: [
-        [5, 2, 4, 2, 0]
-    ]
-};
-
-// Create a new line chart object where as first parameter we pass in a selector
-// that is resolving to our chart container element. The Second parameter
-// is the actual data object.
-
 function f1() {
-    // new Chartist.Line('.ct-chart', {
-    //     labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-    //     series: [
-    //         [12, 9, 7, 8, 5],
-    //         [2, 1, 3.5, 7, 3],
-    //         [1, 3, 4, 5, 6]
-    //     ]
-    // }, {
-    //     fullWidth: true,
-    //     chartPadding: {
-    //         right: 40
-    //     }
-    // });
-    var dat;
+
     $.ajax({
-        url:"/graph/ajax",
-        type:"GET",
-        success:function(result){
+        url: "/graph/secantMethod",
+        data: { a: leftXInput.val(), b: rightXInput.val(), h: stepInput.val() },
+        type: "POST",
+        success: function (result) {
             console.log(result);
             this.dat = result;
 
-            new Chartist.Line('.ct-chart', {
-                series: [result]
-            }, {
+            var data_chart1 = {
+                labels: [],
+                series: [
+                    [],
+                    []
+                ]
+            };
+
+            for (var i = 0; i < result[0].length; i += 1) {
+                data_chart1.series[0].push(result[0][i]);
+                data_chart1.series[1].push(result[1][i]);
+                data_chart1.labels.push(result[2][i]);
+            }
+
+
+            new Chartist.Line('.ct-chart', data_chart1, {
                 axisX: {
-                    type: Chartist.AutoScaleAxis,
                     onlyInteger: true
                 }
             });
@@ -46,7 +32,29 @@ function f1() {
     });
 
 
-
 }
 
-$(document).ready(function(){ f1()}) ;
+var leftXInput = $("#leftX");
+var rightXInput = $("#rightX");
+var stepInput = $("#step");
+var btnInput = $("#plotBtn");
+
+btnInput.on( "click", function() {
+    f1();
+});
+
+leftXInput.on("change", function (){
+    f1();
+});
+
+rightXInput.on("change", function (){
+    f1();
+});
+
+stepInput.on("change", function (){
+    f1();
+});
+
+$(document).ready(function () {
+    f1();
+});
