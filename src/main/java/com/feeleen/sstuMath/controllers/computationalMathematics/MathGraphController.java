@@ -29,10 +29,11 @@ public class MathGraphController {
         List<Double> xList = new ArrayList<>();
 
         for (double i = a; i < b; i += h) {
-            xList.add(Math.floor(i*10)/10);
+            xList.add(Math.floor(i * 10) / 10);
             p1.add(new Point(i, f1(i)));
             p2.add(new Point(i, f2(i)));
         }
+
         TwoCurvesSimpleConverter d = new TwoCurvesSimpleConverter();
         return d.convert(p1, p2, xList);
     }
