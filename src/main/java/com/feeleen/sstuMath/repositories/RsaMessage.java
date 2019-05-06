@@ -5,6 +5,8 @@ import java.security.PublicKey;
 
 public class RsaMessage {
 
+    private Long id;
+
     private String message;
 
     private PublicKey publicKey;
@@ -57,5 +59,13 @@ public class RsaMessage {
 
     public void setSignature(String signature) {
         this.signature = signature;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

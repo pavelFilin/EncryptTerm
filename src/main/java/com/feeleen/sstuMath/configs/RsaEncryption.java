@@ -8,8 +8,6 @@ import java.security.*;
 @Configuration
 public class RsaEncryption {
     // generate public and private keys
-    private Long Id;
-
     private KeyPair keyPair = buildKeyPair();
     private PublicKey pubKey = keyPair.getPublic();
     private PrivateKey privateKey = keyPair.getPrivate();
@@ -24,6 +22,20 @@ public class RsaEncryption {
         return keyPairGenerator.genKeyPair();
     }
 
+    public byte[] encrypt(PrivateKey privateKey, String message) throws Exception {
+        Cipher cipher = Cipher.getInstance("RSA");
+        cipher.init(Cipher.ENCRYPT_MODE, privateKey);
+
+        return cipher.doFinal(message.getBytes());
+    }
+
+    public byte[] decrypt(PublicKey publicKey, byte [] encrypted) throws Exception {
+        Cipher cipher = Cipher.getInstance("RSA");
+        cipher.init(Cipher.DECRYPT_MODE, publicKey);
+
+        return cipher.doFinal(encrypted);
+    }
+
     public PublicKey getPubKey() {
         return pubKey;
     }
@@ -31,4 +43,5 @@ public class RsaEncryption {
     public PrivateKey getPrivateKey() {
         return privateKey;
     }
+
 }

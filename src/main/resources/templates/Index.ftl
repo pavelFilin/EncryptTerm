@@ -3,7 +3,7 @@
 <@common.page>
     <div class="container nav-index">
         <div class="row">
-            <div class="col-4">
+            <div class="col-md-4">
                 <h4>Encrypts</h4>
                 <ul class="list-group">
                     <a class="list-group-item" href="/Encrypts/HomophonicSubstitutionCipher">Монофоническая замена</a>
@@ -14,19 +14,19 @@
                 </ul>
             </div>
 
-            <div class="col-4">
+            <div class="col-md-4">
                 <h4>Hash code</h4>
                 <ul class="list-group">
                     <a class="list-group-item" href="/StringHashCodeExample">String hash code</a>
                 </ul>
             </div>
-            <div class="col-4">
+            <div class="col-md-4">
                 <h4>Interpolation</h4>
                 <ul class="list-group">
                     <a class="list-group-item" href="/InterpolationExtrapolationMethods">Gauss, Bessel, Stirling </a>
                 </ul>
             </div>
-            <div class="col-4">
+            <div class="col-md-4">
                 <h4>Graphs</h4>
                 <ul class="list-group">
                     <a class="list-group-item" href="/graph">Secant method</a>
