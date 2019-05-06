@@ -24,7 +24,7 @@
                 </form>
             </div>
         </div>
-        <table class="table" id="message-table-rsa">
+        <table class="table" id="message-table-rsa" style="max-width: 100%">
             <thead>
                 <th>id</th>
                 <th>message</th>

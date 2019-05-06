@@ -42,20 +42,21 @@ public class RsaEncryptionController {
     @ResponseBody
     public void addMessage(@RequestParam String message) throws Exception {
         RsaMessage rsaMessage = new RsaMessage();
+
         rsaMessage.setMessage(message);
 
         rsaEncryption.buildKeyPair();
-
-        rsaMessage.setMessage(message);
-        rsaMessage.setPrivateKey(rsaEncryption.getPrivateKey());
-        rsaMessage.setPublicKey(rsaEncryption.getPubKey());
+        rsaMessage.setPrivateKey(rsaEncryption.getPrivateKey().toString());
+        rsaMessage.setPublicKey(rsaEncryption.getPubKey().toString());
 
         String signature = "filin@" + message.hashCode();
 
-        rsaEncryption.encrypt(rsaEncryption.getPrivateKey(), signature);
-        rsaMessage.setSignature(signature);
-        rsaMessages.add(rsaMessage);
-        rsaMessage.setId(rsaMessageId);
+        byte[] encrypt = rsaEncryption.encrypt(rsaEncryption.getPrivateKey(), signature);
+        rsaMessage.setSignature(encrypt.toString());
+
         rsaMessageId++;
+        rsaMessage.setId(rsaMessageId);
+
+        rsaMessages.add(rsaMessage);
     }
 }

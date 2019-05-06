@@ -9,24 +9,13 @@ public class RsaMessage {
 
     private String message;
 
-    private PublicKey publicKey;
+    private String publicKey;
 
-    private PrivateKey privateKey;
+    private String privateKey;
 
     private String signature;
 
     public RsaMessage() {
-    }
-
-    public RsaMessage(String message, PublicKey publicKey) {
-        this.message = message;
-        this.publicKey = publicKey;
-    }
-
-    public RsaMessage(String message, PublicKey publicKey, PrivateKey privateKey) {
-        this.message = message;
-        this.publicKey = publicKey;
-        this.privateKey = privateKey;
     }
 
     public String getMessage() {
@@ -37,19 +26,19 @@ public class RsaMessage {
         this.message = message;
     }
 
-    public PublicKey getPublicKey() {
+    public String getPublicKey() {
         return publicKey;
     }
 
-    public void setPublicKey(PublicKey publicKey) {
+    public void setPublicKey(String publicKey) {
         this.publicKey = publicKey;
     }
 
-    public PrivateKey getPrivateKey() {
+    public String getPrivateKey() {
         return privateKey;
     }
 
-    public void setPrivateKey(PrivateKey privateKey) {
+    public void setPrivateKey(String privateKey) {
         this.privateKey = privateKey;
     }
 
