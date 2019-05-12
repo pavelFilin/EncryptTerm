@@ -17,6 +17,7 @@
                     <a class="dropdown-item" href="/Encrypts/VigenereChiper">Шифр виженера</a>
                     <a class="dropdown-item" href="/Encrypts/TranspositionCipher">Метод табличной перестановки</a>
                     <a class="dropdown-item" href="/Encrypts/CombinationCipher">Комбинированый шифр</a>
+                    <a class="dropdown-item" href="/Encrypts/RsaEncryption">RSA</a>
                 </div>
             </li>
             <li>

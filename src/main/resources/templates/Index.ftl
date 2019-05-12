@@ -11,6 +11,7 @@
                     <a class="list-group-item" href="/Encrypts/TranspositionCipher">Метод табличной
                             перестановки</a>
                     <a class="list-group-item" href="/Encrypts/CombinationCipher">Комбинированый шифр</a>
+                    <a class="list-group-item" href="/Encrypts/RsaEncryption">RSA</a>
                 </ul>
             </div>
 

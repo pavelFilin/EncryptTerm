@@ -27,6 +27,7 @@ function updateMessagesTableRSA() {
         success: function (result) {
             console.log(result);
 
+
             $.each(result, function(idx, elem){
                 messageTableRSA.append("<tr><td>"+elem.id+"</td><td>"+elem.message+"</td><td style='word-wrap: break-word; max-width: 300px'>"+elem.publicKey+"</td><td>"+elem.signature+"</td></tr>");
             });

@@ -28,8 +28,8 @@
             <thead>
                 <th>id</th>
                 <th>message</th>
-                <th>signature</th>
                 <th>public key</th>
+                <th>signature</th>
             </thead>
         </table>
     </div>

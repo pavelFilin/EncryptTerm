@@ -46,17 +46,30 @@ public class RsaEncryptionController {
         rsaMessage.setMessage(message);
 
         rsaEncryption.buildKeyPair();
-        rsaMessage.setPrivateKey(rsaEncryption.getPrivateKey().toString());
-        rsaMessage.setPublicKey(rsaEncryption.getPubKey().toString());
+        byte[] privateCode = rsaEncryption.getPrivateKey().getEncoded();
+
+
+        rsaMessage.setPrivateKey(convertByteToString(privateCode));
+        rsaMessage.setPublicKey(convertByteToString(rsaEncryption.getPubKey().getEncoded()));
 
         String signature = "filin@" + message.hashCode();
 
         byte[] encrypt = rsaEncryption.encrypt(rsaEncryption.getPrivateKey(), signature);
-        rsaMessage.setSignature(encrypt.toString());
+        rsaMessage.setSignature(convertByteToString(encrypt));
 
         rsaMessageId++;
         rsaMessage.setId(rsaMessageId);
 
         rsaMessages.add(rsaMessage);
+    }
+
+    private String convertByteToString(byte[] bytes) {
+        StringBuilder stringBuilder = new StringBuilder(bytes.length);
+
+        for (int i = 0; i < bytes.length; i++) {
+            stringBuilder.append(bytes[i]+" ");
+        }
+
+        return stringBuilder.toString();
     }
 }
