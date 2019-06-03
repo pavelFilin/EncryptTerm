@@ -3,7 +3,9 @@ package com.feeleen.sstuMath.controllers;
 import com.feeleen.sstuMath.repositories.RsaCustomMessage;
 import org.springframework.stereotype.Controller;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Random;
 
 @Controller
 public class RsaCustomEncryption {
@@ -42,14 +44,27 @@ public class RsaCustomEncryption {
     }
 
     private int getE(int d, int p, int q) {
-        int e = 1;
+        int e = 2;
 
+        BigInteger bigE = BigInteger.valueOf(e);
+        BigInteger bigD = BigInteger.valueOf(d);
+        BigInteger bigP = BigInteger.valueOf(p);
+        BigInteger bigQ = BigInteger.valueOf(q);
         //todo add random
         while (true) {
-            if ((e * d) % ((p - 1) * (q - 1)) == 1) {
-                return e;
+
+//            int test = (p - 1) * (q - 1);
+            BigInteger temp1 = bigP.subtract(BigInteger.ONE);
+            BigInteger temp2 = bigQ.subtract(BigInteger.ONE);
+            BigInteger bigRight = temp1.multiply(temp2);
+            BigInteger bigL = bigE.multiply(bigD);
+
+            if (bigL.mod(bigRight).intValue() == 1 && bigE.intValue() != bigD.intValue()) {
+                return bigE.intValue();
             } else {
-                e++;
+                System.out.println(bigE.intValue());
+                bigE = bigE.add(BigInteger.ONE);
+
             }
         }
     }
@@ -66,9 +81,10 @@ public class RsaCustomEncryption {
 
 
         //todo use random
+//        Random rnd = new Random();
 //        while (true) {
-//            Random rnd = new Random();
 //            int i = rnd.nextInt(temp);
+//            System.out.println(i);
 //            if (temp % i != 0) {
 //                return i;
 //            }
