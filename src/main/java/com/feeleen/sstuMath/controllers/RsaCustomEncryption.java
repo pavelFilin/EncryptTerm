@@ -1,14 +1,22 @@
 package com.feeleen.sstuMath.controllers;
 
 import com.feeleen.sstuMath.repositories.RsaCustomMessage;
+import com.feeleen.sstuMath.repositories.RsaMessage;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @Controller
+@RequestMapping("/Encrypts/CustomRSA")
 public class RsaCustomEncryption {
+
+    List<RsaCustomMessage> rsaMessages = new ArrayList<>();
 
     public RsaCustomMessage encrypt(String text) throws Exception {
         int p = 43;
@@ -91,6 +99,26 @@ public class RsaCustomEncryption {
 //        }
 
         throw new Exception();
+    }
+
+
+    @GetMapping("messages")
+    @ResponseBody
+    public List<RsaCustomMessage> getMessages(Model model) {
+        return rsaMessages;
+    }
+
+    @GetMapping("messages/{id}")
+    @ResponseBody
+    public RsaCustomMessage getMessage(@PathVariable(name = "id") Long id) {
+        return rsaMessages.get(0);
+    }
+
+    @PostMapping("addMessage")
+    @ResponseBody
+    public void addMessage(@RequestParam String message) throws Exception {
+        RsaCustomMessage encryptMessage = encrypt(message);
+        rsaMessages.add(encryptMessage);
     }
 }
 

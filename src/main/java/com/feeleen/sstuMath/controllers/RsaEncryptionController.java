@@ -40,7 +40,7 @@ public class RsaEncryptionController {
 
     @PostMapping("addMessage")
     @ResponseBody
-    public void addMessage(@RequestParam String message) throws Exception {
+        public void addMessage(@RequestParam String message) throws Exception {
         RsaMessage rsaMessage = new RsaMessage();
 
         rsaMessage.setMessage(message);
