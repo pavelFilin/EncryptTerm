@@ -9,11 +9,11 @@ public class RsaMessage {
 
     private String message;
 
-    private String publicKey;
+    private byte[] publicKey;
 
-    private String privateKey;
+    private byte[] privateKey;
 
-    private String signature;
+    private byte[] signature;
 
     public RsaMessage() {
     }
@@ -26,27 +26,27 @@ public class RsaMessage {
         this.message = message;
     }
 
-    public String getPublicKey() {
+    public byte[] getPublicKey() {
         return publicKey;
     }
 
-    public void setPublicKey(String publicKey) {
+    public void setPublicKey(byte[] publicKey) {
         this.publicKey = publicKey;
     }
 
-    public String getPrivateKey() {
+    public byte[] getPrivateKey() {
         return privateKey;
     }
 
-    public void setPrivateKey(String privateKey) {
+    public void setPrivateKey(byte[] privateKey) {
         this.privateKey = privateKey;
     }
 
-    public String getSignature() {
+    public byte[] getSignature() {
         return signature;
     }
 
-    public void setSignature(String signature) {
+    public void setSignature(byte[] signature) {
         this.signature = signature;
     }
 

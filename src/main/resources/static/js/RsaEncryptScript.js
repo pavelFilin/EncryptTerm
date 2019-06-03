@@ -29,7 +29,7 @@ function updateMessagesTableRSA() {
 
 
             $.each(result, function(idx, elem){
-                messageTableRSA.append("<tr><td>"+elem.id+"</td><td>"+elem.message+"</td><td style='word-wrap: break-word; max-width: 300px'>"+elem.publicKey+"</td><td>"+elem.signature+"</td></tr>");
+                messageTableRSA.append("<tr><td>"+elem.id+"</td><td>"+elem.message+"</td><td style='max-width: 300px;word-wrap: break-word;'>"+elem.publicKey+"</td><td style='max-width: 300px; word-wrap: break-word;'>"+elem.signature+"</td></tr>");
             });
         }
     });

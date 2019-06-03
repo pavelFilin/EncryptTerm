@@ -35,7 +35,7 @@ public class RsaEncryptionController {
     @GetMapping("messages/{id}")
     @ResponseBody
     public RsaMessage getMessage(@PathVariable(name = "id") Long id) {
-        return rsaMessages.stream().filter(s -> s.getId() == id).findFirst().orElseThrow(IllegalArgumentException::new);
+        return rsaMessages.get(0);
     }
 
     @PostMapping("addMessage")
@@ -49,13 +49,13 @@ public class RsaEncryptionController {
         byte[] privateCode = rsaEncryption.getPrivateKey().getEncoded();
 
 
-        rsaMessage.setPrivateKey(convertByteToString(privateCode));
-        rsaMessage.setPublicKey(convertByteToString(rsaEncryption.getPubKey().getEncoded()));
+        rsaMessage.setPrivateKey(privateCode);
+        rsaMessage.setPublicKey(rsaEncryption.getPubKey().getEncoded());
 
         String signature = "filin@" + message.hashCode();
 
         byte[] encrypt = rsaEncryption.encrypt(rsaEncryption.getPrivateKey(), signature);
-        rsaMessage.setSignature(convertByteToString(encrypt));
+        rsaMessage.setSignature(encrypt);
 
         rsaMessageId++;
         rsaMessage.setId(rsaMessageId);
